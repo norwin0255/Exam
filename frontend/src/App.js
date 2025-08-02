@@ -28,8 +28,8 @@ function App() {
       body: JSON.stringify({ title, is_done }),
     });
 
-    const newItems = await res.json();
-    setItems([...items, newItems]);
+    //const newItems = await res.json();
+    await fetchItems();
     setTitle('');
     setStatus(false);
   };
@@ -41,7 +41,8 @@ function App() {
       method: 'DELETE',
     });
 
-    setItems(items.filter(item => item.id !== id));
+    await fetchItems();
+    //setItems(items.filter(item => item.id !== id));
   };
 
   return (
